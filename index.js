@@ -1,10 +1,14 @@
 const http = require('http');
 const express = require('express');
+const morgan = require('morgan');
 
 const hostname = 'localhost';
 const port = 4000;
 
 const app = express();
+app.use(morgan('dev'));
+
+app.use(express.static(__dirname + '/Public'));
 
 app.use((req,res,next)=>{
   res.statusCode = 200;
